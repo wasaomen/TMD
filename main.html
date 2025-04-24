@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMD - メンバー一覧</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="img/tmdlog.png">
+  <audio id="bgm" autoplay loop>
+    <source src="bgm/beat.mp3" type="audio/mpeg">
+  </audio>
+</head>
+<body class="cyber-bg" style="background-color: #000; color: #fff; overflow-y: auto; height: auto;">
+  <video id="bg-video" autoplay loop muted playsinline>
+    <source src="img/TMD.mp4" type="video/mp4">
+  </video>
+  <div class="cyber-overlay"></div>
+  <header class="navbar" style="background-color: rgba(0, 0, 0, 0.8); color: #fff; backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0;">
+    <div class="container">
+      <img src="img/logtmd.png" alt="TMD ロゴ" class="logo site-logo" />
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index2.html">ホーム2</a>
+        <a href="main.html">TMD</a>
+      </nav>
+      <div class="menu-toggle">&#9776;</div>
+    </div>
+  </header>
+
+  <div class="site-menu-toggle">&#9776;</div>
+  <section id="site-menu" class="container site-menu" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; text-align: center;">
+    <div class="site-menu-close">&times;</div>
+    <h2 class="neon-text">サイトメニュー</h2>
+    <ul class="menu-list">
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="index2.html">TMD設立</a></li>
+      <li><a href="main.html">TMD</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">情報</a></li>
+    </ul>
+  </section>
+
+  <section id="member-list" class="container" style="position: relative; z-index: 1; margin-top: 120px; text-align: center; padding: 2rem;">
+    <h2 class="neon-text">TMD メンバー一覧</h2>
+    <div class="member-grid">
+      <div class="member-card">
+        <h3>リーダー</h3>
+        <p>ますだ</p>
+      </div>
+      <div class="member-card">
+        <h3>副リーダー</h3>
+        <p>ミント</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>たけも</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>frea</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>Jucie</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>Soumai</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>弱いほうのるみ</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>今井</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>カリル</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>aratakku</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>なし</p>
+      </div>
+      <div class="member-card">
+        <h3>メンバー</h3>
+        <p>なし</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
