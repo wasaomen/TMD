@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMD - 歴史</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/loading.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/icon.png">
+  <audio id="bgm" autoplay loop>
+    <source src="bgm/bgm2.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    window.addEventListener('load', function() {
+      const bgm = document.getElementById('bgm');
+      bgm.volume = 0.04; // 音量を4%に設定
+    });
+  </script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      overflow-y: auto;
+      min-height: 100vh;
+      padding-bottom: 100px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.8) !important;
+    }
+
+    .history-container {
+      max-width: 800px;
+      margin: 180px auto 40px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      min-height: 200px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .history-item {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #0ff;
+      border-radius: 5px;
+    }
+
+    .history-title {
+      color: #0ff;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .history-content {
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .history-date {
+      color: #0ff;
+      font-size: 0.9em;
+      text-align: right;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #0ff;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .timeline-content {
+      position: relative;
+      width: 45%;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #0ff;
+      border-radius: 5px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: 50%;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-right: 50%;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      background: #0ff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    /* スクロールバーのスタイル */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #0ff;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00ffff;
+    }
+
+    .cyber-grid,
+    .cyber-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="cyber-bg" style="background-color: #000; color: #fff;">
+  <div class="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading...</div>
+  </div>
+  <div class="cyber-grid"></div>
+  <div class="cyber-lines"></div>
+  <header class="navbar" style="background-color: rgba(0, 0, 0, 0.8); color: #fff; backdrop-filter: blur(10px);">
+    <div class="container">
+      <img src="img/icon-removebg-preview (1).png" alt="TMD ロゴ" class="logo site-logo" style="max-width: 100px; height: auto;" />
+      <nav class="nav-links">
+        <a href="index.html" class="cyber-link">Home</a>
+        <a href="index2.html" class="cyber-link">TMD設立</a>
+        <a href="main.html" class="cyber-link">TMD</a>
+        <a href="services.html" class="cyber-link">情報</a>
+        <a href="douga.html" class="cyber-link">歴史</a>
+        <a href="sketch.html" class="cyber-link">スケッチ</a>
+      </nav>
+      <div class="menu-toggle cyber-toggle">&#9776;</div>
+    </div>
+  </header>
+
+  <div class="history-container">
+    <h2 class="cyber-text glitch" data-text="TMDの歴史">TMDの歴史</h2>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3 class="history-title">創設</h3>
+          <p class="history-content">
+            水島組に解雇された後、ますだ会を設立。トロピックの頂点を目指して活動を開始。
+          </p>
+          <div class="history-date">2023年</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3 class="history-title">初代リーダー就任</h3>
+          <p class="history-content">
+            ますだ会の初代リーダーとして、組織の基盤を確立。メンバーの結束を強める。
+          </p>
+          <div class="history-date">2023年</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3 class="history-title">TMDへの改名</h3>
+          <p class="history-content">
+            ますだ会からTMDへと組織名を変更。新たな目標とビジョンを掲げる。
+          </p>
+          <div class="history-date">2024年</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3 class="history-title">現在</h3>
+          <p class="history-content">
+            TMDは強いよりも、強いを取った。組織としての地位を確立し、さらなる発展を目指す。
+          </p>
+          <div class="history-date">2024年</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-menu-toggle cyber-toggle">&#9776;</div>
+  <section id="site-menu" class="container site-menu cyber-menu">
+    <div class="site-menu-close cyber-close">&times;</div>
+    <h2 class="cyber-text">サイトメニュー</h2>
+    <ul class="menu-list">
+      <li><a href="index.html" class="cyber-link">ホーム</a></li>
+      <li><a href="index2.html" class="cyber-link">TMD設立</a></li>
+      <li><a href="main.html" class="cyber-link">TMD</a></li>
+      <li><a href="services.html" class="cyber-link">情報</a></li>
+      <li><a href="douga.html" class="cyber-link">歴史</a></li>
+      <li><a href="sketch.html" class="cyber-link">スケッチ</a></li>
+    </ul>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/loading.js"></script>
+</body>
+</html>

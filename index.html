@@ -5,13 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TMD</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/loading.css">
+  <link rel="stylesheet" href="css/warning.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="img/icon.png">
   <audio id="bgm" autoplay loop>
     <source src="bgm/bgm.mp3" type="audio/mpeg">
   </audio>
+  <audio id="warning-sound">
+    <source src="bgm/Cyber12-1.mp3" type="audio/mpeg">
+  </audio>
 </head>
 <body class="cyber-bg" style="background-color: #000; color: #fff;">
+  <div class="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading...</div>
+  </div>
   <div class="cyber-grid"></div>
   <div class="cyber-lines"></div>
   <header class="navbar" style="background-color: rgba(0, 0, 0, 0.8); color: #fff; backdrop-filter: blur(10px);">
@@ -22,6 +31,8 @@
         <a href="index2.html" class="cyber-link">TMD設立</a>
         <a href="main.html" class="cyber-link">TMD</a>
         <a href="services.html" class="cyber-link">情報</a>
+        <a href="douga.html" class="cyber-link">歴史</a>
+        <a href="sketch.html" class="cyber-link">スケッチ</a>
       </nav>
       <div class="menu-toggle cyber-toggle">&#9776;</div>
     </div>
@@ -35,6 +46,28 @@
     </div>
   </section>
 
+  <section class="video-links">
+    <div class="container">
+      <h2 class="cyber-text glitch" data-text="Video Links">Video Links</h2>
+      <div class="video-grid">
+        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" class="video-link cyber-link" target="_blank">
+          <div class="video-thumbnail">
+            <img src="img/video-thumbnail1.jpg" alt="Video Thumbnail">
+            <div class="play-icon">▶</div>
+          </div>
+          <h3 class="video-title">TMD Video 1</h3>
+        </a>
+        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" class="video-link cyber-link" target="_blank">
+          <div class="video-thumbnail">
+            <img src="img/video-thumbnail2.jpg" alt="Video Thumbnail">
+            <div class="play-icon">▶</div>
+          </div>
+          <h3 class="video-title">TMD Video 2</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <div class="site-menu-toggle cyber-toggle">&#9776;</div>
   <section id="site-menu" class="container site-menu cyber-menu">
     <div class="site-menu-close cyber-close">&times;</div>
@@ -44,11 +77,15 @@
       <li><a href="index2.html" class="cyber-link">TMD設立</a></li>
       <li><a href="main.html" class="cyber-link">TMD</a></li>
       <li><a href="services.html" class="cyber-link">情報</a></li>
+      <li><a href="douga.html" class="cyber-link">歴史</a></li>
+      <li><a href="sketch.html" class="cyber-link">スケッチ</a></li>
     </ul>
   </section>
 
   <!-- ここに他のセクションを追加 -->
 
   <script src="js/main.js"></script>
+  <script src="js/loading.js"></script>
+  <script src="js/warning.js"></script>
 </body>
 </html>

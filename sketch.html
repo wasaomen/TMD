@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMD - スケッチ掲示板</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/loading.css">
+  <link rel="stylesheet" href="css/warning.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/icon.png">
+  <style>
+    body {
+      overflow-y: auto;
+      min-height: 100vh;
+      padding-bottom: 100px;
+      position: relative;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.8) !important;
+    }
+
+    .sketch-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 180px auto 40px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      z-index: 1;
+    }
+
+    .sketch-canvas {
+      width: 100%;
+      height: 500px;
+      background: #000;
+      border: 1px solid #0ff;
+      cursor: crosshair;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cyber-grid,
+    .cyber-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sketch-controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sketch-btn {
+      padding: 10px 20px;
+      background: transparent;
+      border: 2px solid #0ff;
+      color: #0ff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .sketch-btn:hover {
+      background: #0ff;
+      color: #000;
+    }
+
+    .color-picker {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .color-option {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #fff;
+    }
+
+    .sketch-list {
+      margin: 40px auto;
+      max-width: 800px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+      min-height: 200px;
+    }
+
+    .sketch-item {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .sketch-item img {
+      width: 100%;
+      height: auto;
+    }
+
+    .sketch-item p {
+      color: #0ff;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+      border-top: 2px solid #0ff;
+      z-index: 2;
+    }
+
+    /* スクロールバーのスタイル */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #0ff;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00ffff;
+    }
+  </style>
+</head>
+<body class="cyber-bg" style="background-color: #000; color: #fff;">
+  <div class="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading...</div>
+  </div>
+  <div class="cyber-grid"></div>
+  <div class="cyber-lines"></div>
+  <header class="navbar" style="background-color: rgba(0, 0, 0, 0.8); color: #fff; backdrop-filter: blur(10px);">
+    <div class="container">
+      <img src="img/icon-removebg-preview (1).png" alt="TMD ロゴ" class="logo site-logo" style="max-width: 100px; height: auto;" />
+      <nav class="nav-links">
+        <a href="index.html" class="cyber-link">Home</a>
+        <a href="index2.html" class="cyber-link">TMD設立</a>
+        <a href="main.html" class="cyber-link">TMD</a>
+        <a href="services.html" class="cyber-link">情報</a>
+        <a href="douga.html" class="cyber-link">動画</a>
+        <a href="sketch.html" class="cyber-link">スケッチ</a>
+      </nav>
+      <div class="menu-toggle cyber-toggle">&#9776;</div>
+    </div>
+  </header>
+
+  <div class="sketch-container">
+    <h2 class="cyber-text glitch" data-text="スケッチ掲示板">スケッチ掲示板</h2>
+    <canvas id="sketchCanvas" class="sketch-canvas"></canvas>
+    <div class="color-picker">
+      <div class="color-option" style="background: #ff0000;" data-color="#ff0000"></div>
+      <div class="color-option" style="background: #00ff00;" data-color="#00ff00"></div>
+      <div class="color-option" style="background: #0000ff;" data-color="#0000ff"></div>
+      <div class="color-option" style="background: #ffff00;" data-color="#ffff00"></div>
+      <div class="color-option" style="background: #ffffff;" data-color="#ffffff"></div>
+    </div>
+    <div class="sketch-controls">
+      <button class="sketch-btn" id="clearBtn">クリア</button>
+      <button class="sketch-btn" id="saveBtn">保存</button>
+    </div>
+  </div>
+
+  <div class="sketch-list" id="sketchList">
+    <!-- 保存されたスケッチがここに表示されます -->
+  </div>
+
+  <div class="site-menu-toggle cyber-toggle">&#9776;</div>
+  <section id="site-menu" class="container site-menu cyber-menu">
+    <div class="site-menu-close cyber-close">&times;</div>
+    <h2 class="cyber-text">サイトメニュー</h2>
+    <ul class="menu-list">
+      <li><a href="index.html" class="cyber-link">ホーム</a></li>
+      <li><a href="index2.html" class="cyber-link">TMD設立</a></li>
+      <li><a href="main.html" class="cyber-link">TMD</a></li>
+      <li><a href="services.html" class="cyber-link">情報</a></li>
+      <li><a href="douga.html" class="cyber-link">動画</a></li>
+      <li><a href="sketch.html" class="cyber-link">スケッチ</a></li>
+    </ul>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/loading.js"></script>
+  <script src="js/warning.js"></script>
+  <script src="js/sketch.js"></script>
+</body>
+</html> 
